@@ -1,0 +1,8 @@
+{
+  "domain": "unifi_poe_monitor",
+  "name": "UniFi PoE Monitor",
+  "version": "0.1.0",
+  "config_flow": true,
+  "codeowners": [],
+  "iot_class": "local_polling"
+}

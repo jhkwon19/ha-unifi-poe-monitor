@@ -1,0 +1,25 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to UniFi Network",
+        "data": {
+          "host": "Controller URL",
+          "api_key": "UniFi API key",
+          "site": "Site ID",
+          "verify_ssl": "Verify SSL certificate"
+        }
+      },
+      "switch": {
+        "title": "Choose a PoE switch",
+        "data": {"mac": "Switch"}
+      }
+    },
+    "error": {
+      "invalid_host": "Enter a URL starting with http:// or https://",
+      "invalid_auth": "API key was rejected",
+      "cannot_connect": "Cannot connect to UniFi Network",
+      "no_switches": "No PoE switches were found in this site"
+    }
+  }
+}
