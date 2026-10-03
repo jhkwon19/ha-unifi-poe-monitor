@@ -6,6 +6,7 @@ import aiohttp
 import voluptuous as vol
 
 from homeassistant import config_entries
+from homeassistant.helpers import selector
 
 from .api import UniFiAPIError, UniFiAuthError, UniFiClient, normalize_mac, poe_ports
 from .const import DOMAIN
@@ -31,6 +32,8 @@ class UniFiPoEFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 client = UniFiClient(**connection)
                 try:
                     devices = await client.devices()
+                except aiohttp.ClientConnectorCertificateError:
+                    errors["base"] = "invalid_ssl"
                 except UniFiAuthError:
                     errors["base"] = "invalid_auth"
                 except (aiohttp.ClientError, TimeoutError, UniFiAPIError, ValueError):
@@ -51,12 +54,21 @@ class UniFiPoEFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     errors["base"] = "no_switches"
                 finally:
                     await client.close()
-        schema = vol.Schema({
-            vol.Required("host", default="https://unifi.local"): str,
-            vol.Required("api_key"): str,
-            vol.Required("site", default="default"): str,
-            vol.Required("verify_ssl", default=True): bool,
-        })
+        values = user_input or {}
+        schema = vol.Schema(
+            {
+                vol.Required(
+                    "host", default=values.get("host", "https://unifi.local")
+                ): str,
+                vol.Required("api_key", default=values.get("api_key", "")): selector.TextSelector(
+                    selector.TextSelectorConfig(type=selector.TextSelectorType.PASSWORD)
+                ),
+                vol.Required("site", default=values.get("site", "default")): str,
+                vol.Required(
+                    "verify_ssl", default=values.get("verify_ssl", True)
+                ): bool,
+            }
+        )
         return self.async_show_form(step_id="user", data_schema=schema, errors=errors)
 
     async def async_step_switch(self, user_input: dict | None = None):

@@ -12,7 +12,9 @@
       },
       "switch": {
         "title": "Choose a PoE switch",
-        "data": {"mac": "Switch"}
+        "data": {
+          "mac": "Switch"
+        }
       }
     },
     "error": {
@@ -20,7 +22,7 @@
       "invalid_auth": "API key was rejected",
       "invalid_ssl": "The controller certificate is not trusted. Turn off SSL certificate verification for a self-signed certificate",
       "cannot_connect": "Cannot connect to UniFi Network",
-      "no_switches": "No PoE switches were found in this site"
+      "no_switches": "No 16-port PoE switches were found in this site"
     }
   }
 }

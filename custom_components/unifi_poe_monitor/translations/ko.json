@@ -1,0 +1,28 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "UniFi Network 연결",
+        "data": {
+          "host": "컨트롤러 URL",
+          "api_key": "UniFi API 키",
+          "site": "사이트 ID",
+          "verify_ssl": "SSL 인증서 검증"
+        }
+      },
+      "switch": {
+        "title": "PoE 스위치 선택",
+        "data": {
+          "mac": "스위치"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "http:// 또는 https://로 시작하는 URL을 입력하세요",
+      "invalid_auth": "API 키가 거부되었습니다",
+      "invalid_ssl": "컨트롤러 인증서를 신뢰할 수 없습니다. 자체 서명 인증서라면 SSL 인증서 검증을 끄세요",
+      "cannot_connect": "UniFi Network에 연결할 수 없습니다",
+      "no_switches": "이 사이트에서 16포트 PoE 스위치를 찾지 못했습니다"
+    }
+  }
+}
