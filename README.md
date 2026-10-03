@@ -79,7 +79,28 @@ Home Assistant의 **기기 하나**로 등록합니다.
 현재 공개된 공식 Network API 명세에 포함되지 않은 기존 통계 경로이므로 UniFi
 Network 업데이트 후 응답 형식이나 접근 가능 여부가 바뀔 수 있습니다.
 
-## 설치
+## HACS로 설치
+
+이 저장소는 HACS 사용자 정의 저장소 형식을 지원합니다.
+
+1. Home Assistant에서 **HACS → 통합 구성요소**로 이동합니다.
+2. 오른쪽 위 메뉴에서 **사용자 정의 저장소**를 엽니다.
+3. 저장소 주소에 다음 URL을 입력합니다.
+
+   ```text
+   https://github.com/jhkwon19/ha-unifi-poe-monitor
+   ```
+
+4. 유형으로 **통합 구성요소(Integration)**를 선택하고 저장소를 추가합니다.
+5. HACS에서 **UniFi PoE Monitor**를 찾아 다운로드합니다.
+6. Home Assistant를 다시 시작합니다.
+7. **설정 → 기기 및 서비스 → 통합 구성요소 추가**에서 **UniFi PoE Monitor**를
+   검색하고 연결 정보를 입력합니다.
+
+현재 HACS 기본 저장소에는 등록되어 있지 않으므로 처음 한 번은 사용자 정의
+저장소 URL을 추가해야 합니다.
+
+## 수동 설치
 
 1. 이 저장소의 `custom_components/unifi_poe_monitor` 디렉터리를 Home Assistant의
    `config/custom_components/` 아래에 복사합니다.

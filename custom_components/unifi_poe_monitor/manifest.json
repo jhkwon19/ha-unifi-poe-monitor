@@ -1,8 +1,11 @@
 {
   "domain": "unifi_poe_monitor",
   "name": "UniFi PoE Monitor",
-  "version": "0.1.0",
+  "codeowners": ["@jhkwon19"],
   "config_flow": true,
-  "codeowners": [],
-  "iot_class": "local_polling"
+  "documentation": "https://github.com/jhkwon19/ha-unifi-poe-monitor",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/jhkwon19/ha-unifi-poe-monitor/issues",
+  "version": "0.1.0"
 }
